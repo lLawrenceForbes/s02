@@ -1,0 +1,293 @@
+WHat is the Data Model?
+	- Data model describes how data is organized and grouped in a database
+
+	By creating data model, we cam amticipate which data will be manage by the Database Management System in accordance to the application to be developed
+
+Data Modeling
+	- Database should have a purpose and its organization must be related to the kind of application we are building.
+
+//Scenario
+	A course booking system application where a user can book into a course
+
+Type: Course Booking System
+Desciption: A course booking system application where a user can book into a course
+Features:
+	- User Registration
+	- User Authentication/Login
+		-Authenticated Users:
+			- View Courses
+			- Enroll Course
+			- Update Details (with Admin verification)
+			- Delete Details (with Admin verification)
+		- Admin Users
+			- Add Course
+			- View/Manage User Accounts
+			- Update Course
+			- Archive/De-activate Course
+			- Activate Course
+		-All Users (guests, authenticated, admin)
+			- View Active Courses
+
+Data models
+	- Blueprints for our documents that we can follow and structure our data.
+	- Show the relationship/s between our data.
+
+   EX.
+	user {
+		id - unique identifier for the document,
+		userName,
+		firstName,
+		lastName,
+		email,
+		password,
+		mobileNumber,
+		isAdmin
+	}
+	course{
+		id,
+		name,
+		description,
+		price,
+		slots,
+		schedule,
+		instructor,
+		isActive
+	}
+	enrollment{
+		id - document identifier,
+		userId - the unique identifier for the user,
+		username - optional,
+		courseId - the unique identifier for the course,
+		courseName - optional,
+		isPaid,
+		dateEnrolled
+	}
+
+Model Relationship
+	- To be able to properly organize an application database we should be able to identify the relationship between our models.
+
+	One to One - this relationship means that a model is exclusively related to only one model.
+		EX.
+			Employee:
+			{
+				"id": "2022Dev",
+				"firstName": "Jack",
+				"lastName": "Sullivan",
+				"email": "jsullivan@gmail.com"
+			}
+
+			Credentials:
+			{
+				"id": "creds_01",
+				"employee_id": "2022Dev",
+				"role": "developer",
+				"team": "tech"
+			}
+
+in MongoDB, one to one relationship can be express in another way instead of referencing.
+	Embedding
+		- embed/put another document
+		- subdocuments
+			- are documents embedded in a parent document
+
+Employee:
+			{
+				"firstName": "Jack",
+				"lastName": "Sullivan",
+				"email": "jsullivan@gmail.com",
+			
+					"Credentials":
+					{
+						"id": "creds_01",
+						"employee_id": "2022Dev",
+						"role": "developer",
+						"team": "tech"
+					}
+			}
+
+One to Many
+	- One model is related to multiple other models.
+
+	-Person - many email address
+
+	-Email - one person
+
+	- Blog post - comments
+		- a blog post can have multiple comments but each comment should only refer to a single blog post.
+
+	Blog : {
+
+		"id": "blog1-22",
+		"title": "This is an Awesome blog",
+		"content": "This is an awesome blog that I created!",
+		"createdOn": "9/1/2022",
+		"Author": "blogwriter1"
+	
+	}
+
+	Comments:
+	{
+		"id": "blogcomment1",
+		"comment": "Awesome blog"
+		"author": "blogwriter1",
+		"blog_id": "blog1-22"
+	}
+	{
+		"id": "blogcomment2",
+		"comment": "Meh. Not a good blog"
+		"author": "blogwriter2",
+		"blog_id": "blog1-22"
+	}
+
+	In MongoDB, one to many relationship can also be expressed in another way:
+		Subdocument Array - an array of subdocuments per single parent document. 
+
+	Blog : {
+
+		"id": "blog1-22",
+		"title": "This is an Awesome blog",
+		"content": "This is an awesome blog that I created!",
+		"createdOn": "9/1/2022",
+		"Author": "blogwriter1",
+		"comments":[
+	{
+		"id": "blogcomment1",
+		"comment": "Awesome blog"
+		"author": "blogwriter1",
+		"blog_id": "blog1-22"
+	},
+	{
+		"id": "blogcomment2",
+		"comment": "Meh. Not a good blog"
+		"author": "blogwriter2",
+		"blog_id": "blog1-22"
+	}
+		]
+	
+	}
+
+	Many to Many
+		- Multiple documents are related to multiple documents.
+
+		Users - courses
+		- When a many to many relationship is created, for models to relate to each other, an associative entity is created.
+			- Associative entity is a model that relates models in many to many relationships.
+
+		EX.
+			user - enrollment - course
+			So that a user can relate to a course, so we can track the enrollment of a user to a course, we have to create the details for their enrollment
+
+		With Referencing:
+
+		user{
+			id - unique identifier for the document
+			username,
+			firstname,
+			lastName,
+			email,
+			password,
+			mobileNumber,
+			isAdmin
+		}
+
+		course{
+			id,
+			name,
+			description,
+			price,
+			slots,
+			schedule,
+			instructor,
+			isActivate
+		}
+		enrollment{
+			id - document identifier,
+			userId - the unique identifier for the user,
+			username - optional,
+			courseId - the unique identifier for the course,
+			courseName - optional,
+			isPaid,
+			dateEnrolled
+		}
+
+	In MongoDB, many to many relationship can be expressed in another way:
+		Two Way Embedding
+			- In to way embedding, the associative entity is created and embedded in both models/documents.
+
+		user{
+			id - unique identifier for the document
+			username,
+			firstname,
+			lastName,
+			email,
+			password,
+			mobileNumber,
+			isAdmin,
+			enrollment:[
+			{
+				id - document identifier,
+				userId - the unique identifier for the user,
+				username - optional,
+				courseId - the unique identifier for the course,
+				courseName - optional,
+				isPaid,
+				dateEnrolled
+			
+			}	
+				]
+		}
+
+		course{
+			id,
+			name,
+			description,
+			price,
+			slots,
+			schedule,
+			instructor,
+			isActivate,
+			enrolees:[
+			{
+				id - document identifier,
+				userId - the unique identifier for the user,
+				username - optional,
+				courseId - the unique identifier for the course,
+				courseName - optional,
+				isPaid,
+				dateEnrolled
+			
+			}	
+				]
+		}
+
+mam Thonie
+	Enrollment
+	mam Thonie
+	Python
+
+	Enrollment
+	mam Thonie
+	React
+
+	Enrollment
+	mam Thonie
+	Java		
+
+Remulla
+	Enrollment
+	Remula
+	Java
+
+Kenneth
+	Enrollment
+	Kenneth
+	Java
+
+	Enrollment
+	Kenneth
+	React
+
+
+
+
+

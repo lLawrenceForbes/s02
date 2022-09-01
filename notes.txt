@@ -1,0 +1,133 @@
+What is database?
+    - Database is a collection of organized data.
+        - Data is arranged and organized in a meaningful way
+
+    Random Group of data without meaning:
+    "Michael Smith",
+    "Cancelled",
+    true,
+    25000,
+    Corn Flakes,
+    5
+
+Data vs Information
+
+Data
+    - is a raw input and does not hold specific meaning
+Information
+    - is a data arranged and hold a specific meaning. It is usually associated with a data and a label.
+
+    MobileNumber: 09953020491
+
+    {
+        name: "Michael Smith",
+        championships: [1991, 1992, 1993, 1996, 1997, 1989]
+        draftYear: 1984,
+        draftPosition: 3,
+        MVPs: 5
+    }
+
+    DBMS
+        - Database Management System
+        - A database management system allows us to manipulate/manage databases. We could perform operations on our database.
+
+        What is CRUD?
+            - basic operation to manipulate and manage a database
+
+                - C - create
+                    - to add/insert an entry into the database
+                - R - read/retrieve
+                    - to select and update an entry from a database
+                - U - update
+                    - to select and update an entry from database
+                - D - delete
+                    - to select and delete an entry from database
+        Relational Databases
+            - allows us to store data and information and arrange them meaningfully in a table
+
+                - Data is arranged and stored in a Table with rows and columns
+
+        Subject     1stQ    2ndQ    3rdQ    4thQ
+        Mathematics  75      76      86      80
+
+
+        Relational Database for an E-commerce website
+
+        Product Tables
+        id      name    price
+        1       PS5     27500
+        2       PS4     16000
+
+        Structured Query Language (SQL)
+            - it is typically used to programmatically manage or manipulate of a relational database.
+
+        NoSQL
+            - Not Only Structure Query Language
+                - Data is arranged and organized in JSON Format
+                - Data is arranged and organized in a more complex and scalable format.
+        
+        [
+            {
+                "id": 123-0123,
+                "name": "PS5",
+                "price": 27500
+            },
+            {
+                "id": 123-0124,
+                "name": "PS4",
+                "price": 16000
+            }
+        ]
+
+                                        SQL          No SQL
+    A collection/group of data:         Table        Document
+    An entry level of data:             Tow          Document
+    Defines the value of an entry:      columns      Fields
+
+
+SQL and NoSQL - Use Case
+    - SQL/relational database
+        - data and its structure changes less and need not to be changed immediately and dynamically.
+
+        - most banks/financial institutions uses RDBMS.
+    - NoSQL
+        - data and structure often and its dynamics
+
+Twitter Post
+{
+    id:
+    user:
+    content:
+    date:
+    likes:
+    retweets:
+    comments: [{
+        commentId:
+        users:
+        content:
+        hashtags:
+        likes:
+        retweets: ,
+        comments: [{
+            commentId:
+            users:
+            content:
+            hashtags:
+            likes:
+            retweets: ,
+            comments:
+            }
+        ]
+        }
+    ]
+}
+
+MERN - The letter "M" is a MERN Stack
+    MongoDB
+
+    The reason why MongoDB is called Mongo "humongous"
+        - it refers to the way that in MongoDB, data structure can become huge
+
+        - MongoDB is the leading NoSQL database
+
+        Ex. Mongo Atlas
