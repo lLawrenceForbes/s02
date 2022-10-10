@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Database</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		let user = `[
+		     {
+
+		        "username": "Hanna",
+		        "firstName": "Hannah",
+		        "lastName": "Salvador",
+		        "email": "hana0620@gmail.com",
+		        "password": "0620hana",
+		        "mobileNumber": "9653218317",
+		        "isAdmin": "no",
+		        "enrollments" : [ 
+		            {
+		                "courseId" : "1",
+		                "courseName" : "Math",
+		                "isPaid": "yes",
+		                "dateEnrolled": "07/28/2022"
+		            }
+	]
+
+}
+
+{
+
+		        "username": "John",
+		        "firstName": "Johnn",
+		        "lastName": "Salvy",
+		        "email": "john321@gmail.com",
+		        "password": "john123",
+		        "mobileNumber": "2345678",
+		        "isAdmin": "no",
+		        "enrollments" : [ 
+		            {
+		                "courseId" : "course2",
+		                "courseName" : "English",
+		                "isPaid": "yes",
+		                "dateEnrolled": "07/28/2022"
+		            }
+	]
+
+}
+		 ]`;
+		// console.log(blog); 
+		console.log(JSON.parse(user)[0].comments);
+	</script>
+</body>
+</html>
